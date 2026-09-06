@@ -1,4 +1,4 @@
-GTA IV Grass & Procedural Props Fix
+# GTA IV Grass & Procedural Props Fix
 
 Fix disappearing grass and procedural props with automatic pool sizing, configurable density, and distance scaling.
 
