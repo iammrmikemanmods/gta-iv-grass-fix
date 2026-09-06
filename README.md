@@ -87,18 +87,6 @@ HangMessageBox=1
 
 **Recommended in-game setting:** Detail Distance **100**.
 
-### Version 1.2 settings note
-
-The v1.2 release files update how density values are interpreted:
-
-- `PlantDensityMultiplier=1.0` and `ProceduralObjectDensityMultiplier=1.0` each represent the previous version's `0.5` density scale.
-- To retain a density value from v1.1, multiply it by two when moving to v1.2. For example, old `0.5` becomes new `1.0`, and old `1.0` becomes new `2.0`.
-- The v1.2 density range is `0.2` to `4.0`.
-- `DistanceMultiplier` is unchanged; its range remains `0.5` to `4.0`.
-- The supplied v1.2 INI uses `HangMessageBox=0` and `FullHangDump=0`.
-
-Use the INI supplied with your release as the starting point. The distance multiplier and the game's Detail Distance slider are separate settings. Restart the game after making changes.
-
 ![Grass and procedural props distance fix promotional comparison](assets/images/author-08.webp)
 
 ## Compatibility
