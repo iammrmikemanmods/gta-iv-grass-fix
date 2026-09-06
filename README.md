@@ -126,7 +126,7 @@ To roll back, close the game and restore the backed-up ASI and matching INI toge
 
 ## Compile it yourself
 
-These instructions build the **v1.2 C source** into a **32-bit Windows ASI**. They were checked against the packaged `GRASS-BLD-0050` source.
+These instructions build the **v1.2 C source** into a **32-bit Windows ASI**.
 
 ### 1. Get the tools and source
 
