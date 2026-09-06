@@ -210,27 +210,7 @@ build/GTAIV.EFLC.ProceduralFixes.ini
 
 Install this pair using the [installation steps](#installation). Keep `raw.asi` as an intermediate build file; install the final `GTAIV.EFLC.ProceduralFixes.asi`.
 
-### Build verification
 
-On 6 September 2026, this compiler command and helper reproduced the local packaged **v1.2 / GRASS-BLD-0050** ASI byte for byte from its 28 packaged source files:
-
-```text
-Size:    577536 bytes
-SHA-256: 6C032A33C3922EEBAD93E9473AA7143DFEF480F16E70A727A7BEB5DB21529BDF
-```
-
-That comparison applies to the unmodified v1.2 source and the checked TinyCC toolchain. Changes to the source, toolchain, module order, or intermediate output name can change the hash. Keep the intermediate filename `raw.asi` when reproducing this build. A successful compilation confirms the build; in-game behaviour still needs testing.
-
-### Common build problems
-
-| Problem | What to check |
-| --- | --- |
-| `tcc.exe` is not found | Update `$tcc` to the actual path of the extracted compiler. |
-| Missing standard or Windows headers/libraries | Extract the entire Win32 TinyCC archive, including its `include` and `lib` folders. |
-| Missing generated `.h` or `.inc` file | Restore the complete `src` directory from the same release. |
-| Architecture or inline-assembly errors | Confirm that `tcc -v` reports `i386 Windows`. |
-| Duplicate symbols | Use the ten-module command above without adding every other C file in `src`. |
-| `py` is not recognized | Use `python` if available, or install Python for Windows. |
 
 ## Screenshots
 
