@@ -6,6 +6,7 @@
 #include "universal_install.h"
 #include "universal_profiles.h"
 #include "grass_compat.generated.h"
+#include "loader_context.h"
 
 /* TinyCC's Win32 CRT declaration is kept local to avoid a broad CRT header. */
 int __cdecl atexit(void (__cdecl *function)(void));
@@ -24,7 +25,6 @@ int __cdecl atexit(void (__cdecl *function)(void));
 #define GU_STARTUP_RESUME_ATTEMPTS 4u
 #define GU_STARTUP_LOADER_WAIT_MS 30000u
 
-typedef BYTE (WINAPI *GuRtlIsThreadWithinLoaderCalloutFn)(void);
 #define GU_STATUS_NO_MORE_ENTRIES 0x8000001Au
 
 typedef LONG (WINAPI *GuNtQueryInformationThreadFn)(
@@ -16843,21 +16843,15 @@ static DWORD WINAPI startup_worker_main(LPVOID parameter)
  * thread here until the transaction has completed. This removes the loader-
  * return race without running patch work or waiting inside DllMain.
  * A loader may itself call from a DLL notification; defer in that case.
- * An absent native callout query also falls back to the existing worker.
+ * An unknown loader context also falls back to the existing worker.
  * The wait is bounded and never changes any identity/state/rollback gate. */
 __declspec(dllexport) void __cdecl InitializeASI(void)
 {
-    HMODULE ntdll;
-    GuRtlIsThreadWithinLoaderCalloutFn in_loader_callout;
     DWORD started;
     LONG state;
 
     InterlockedIncrement(&g_startup_loader_callback_calls);
-    ntdll = GetModuleHandleA("ntdll.dll");
-    in_loader_callout = ntdll ?
-        (GuRtlIsThreadWithinLoaderCalloutFn)GetProcAddress(
-            ntdll, "RtlIsThreadWithinLoaderCallout") : NULL;
-    if (!in_loader_callout || in_loader_callout()) {
+    if (!gu_loader_can_wait()) {
         InterlockedIncrement(&g_startup_loader_callback_deferred);
         return;
     }
