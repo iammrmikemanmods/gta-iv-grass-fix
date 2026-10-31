@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/MehranAkbarii/gta-iv-grass-fix/releases/tag/v3.5.1">Download v3.5.1 on GitHub</a> &middot;
   <a href="https://www.nexusmods.com/gta4/mods/1230?tab=files">Download on Nexus Mods</a> &middot;
   <a href="https://discord.gg/4pWnszrvMP">Discord</a> &middot;
   <a href="https://github.com/iammrmikemanmods/gta-iv-grass-fix">GitHub</a>
@@ -48,6 +49,12 @@ GTAIV.EFLC.ProceduralFixes.asi
 GTAIV.EFLC.ProceduralFixes.ini
 ```
 
+<p align="center">
+  When updating, replace both files with the matching release pair and remove any duplicate copies from other ASI-loading folders.<br>
+  To uninstall, remove the ASI and its INI from the folder where you installed them.<br>
+  If the plugin fails to load or a setting is rejected, check <code>GTAIV.EFLC.ProceduralFixes.log</code> beside the plugin.
+</p>
+
 ![Grass, litter and procedural props along a Liberty City street](assets/grass-fix/03-liberty-city-street-props.png)
 
 <h2 align="center">Development Update</h2>
@@ -72,31 +79,37 @@ GTAIV.EFLC.ProceduralFixes.ini
   We look forward to continuing its development and bringing further improvements to <strong>GTA IV</strong>.
 </p>
 
-<h2 align="center">Recommended settings</h2>
+<h2 align="center">Default settings — v3.5.1</h2>
+
+<p align="center">
+  v3.5.1 ships with <code>DistanceMultiplier=1.00</code> and neutral density settings. Values above 1.0 can cause instability or micro-stutters; values above 2.0 are experimental. Start with the supplied INI before changing individual options.
+</p>
 
 ```ini
 [ProceduralPool]
 Capacity=16384
 RenderedObjectCapacity=8192
 ProviderCapacity=40
-
-DistanceMultiplier=1.25
+DistanceMultiplier=1.00
 PlantDensityMultiplier=1.0
 ProceduralObjectDensityMultiplier=1.0
 DensityClassMask=3
-
 DebugLog=1
 HangWatchdog=0
 HangTimeoutSeconds=30
 HangMessageBox=0
 FullHangDump=0
-
-GeneratorMatrixLimit=4096
 GeneratorMatrixPool=0
+GeneratorMatrixLimit=4096
+DrawableRefs=100000
+DrawableRefsOwnMemory=0
+RenderCache=32768
+SpawnsPerUpdate=1024
+SpawnNearAlways=50
 PropsInWaterReflections=1
-
 ConeBack=70
 ConeFullAngle=75
+ConeReleasePerUpdate=384
 ConeTurnLeadMs=300
 ```
 
@@ -116,11 +129,11 @@ ConeTurnLeadMs=300
 <h2 align="center">Mod Compatibility</h2>
 
 <p align="center">
-  <strong>Props Restoration and Restored Vegetation are not recommended alongside Grass Fix v3.4</strong>, as they may cause instability or crashes.
+  <strong>Do not use Props Restoration or Restored Vegetation alongside Grass Fix v3.5.1</strong>, as they may cause crashes.
 </p>
 
 <p align="center">
-  <strong>mehraanakbarii</strong> has provided modified compatibility versions of both mods, with potentially conflicting files removed, available in <a href="https://discord.com/invite/4pWnszrvMP">Grass Fix Discord</a>.
+  For compatibility questions and any specifically adapted versions, check <a href="https://discord.com/invite/4pWnszrvMP">Grass Fix Discord</a>. Do not assume an older compatibility package is suitable for v3.5.1.
 </p>
 
 <h3 align="center">Supported GTA IV versions</h3>
